@@ -15,15 +15,15 @@ public class BuyersBean {
 
     private Client httpClient;
 
-    @Inject
-    private AppProperties appProperties;
+    //@Inject
+    //private AppProperties appProperties;
 
-    @Inject
-    private BuyersBean buyersBean;
+    //@Inject
+    //private BuyersBean buyersBean;
 
-    @Inject
-    @DiscoverService("rso-orderes")
-    private Optional<String> baseUrl;
+    //@Inject
+    //@DiscoverService("rso-orderes")
+    //private Optional<String> baseUrl;
 
     @PostConstruct
     private void init() {
