@@ -29,4 +29,5 @@ public class BuyersBean {
     private void init() {
         httpClient = ClientBuilder.newClient();
     }
+
 }
