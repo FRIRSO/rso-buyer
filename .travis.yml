@@ -13,12 +13,10 @@ cache:
   directories:
   - $HOME/.m2
 
-env:
-- DOCKER_IMAGE=gsas/rso-buyers
 
 script:
 - mvn clean package -U
-- docker build -t "$DOCKER_IMAGE" .
+- docker build -t gsas/rso-buyers .
 
 after_success:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
