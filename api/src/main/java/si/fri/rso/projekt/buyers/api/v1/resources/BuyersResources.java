@@ -18,6 +18,6 @@ public class BuyersResources {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public Response getBuyers() {
-        return Response.ok("Dela").build();
+        return Response.status(Response.Status.OK).entity("Dela").build();
     }
 }
