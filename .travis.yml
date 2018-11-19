@@ -20,4 +20,4 @@ script:
 
 after_success:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-- docker push "$DOCKER_IMAGE"
+- docker push gsas/rso-buyers
