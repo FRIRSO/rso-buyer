@@ -12,12 +12,12 @@ import javax.ws.rs.core.Response;
 @Path("/buyer")
 public class BuyersResources {
 
-    @Inject
-    private BuyersBean buyersBean;
+    //@Inject
+    //private BuyersBean buyersBean;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public Response getBuyers() {
-        return Response.ok("Deka").build();
+        return Response.ok("Dela").build();
     }
 }
