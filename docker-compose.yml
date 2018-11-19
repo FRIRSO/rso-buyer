@@ -1,0 +1,16 @@
+version: "2"
+services:
+  rso-customers:
+    image: gsas/rso-buyers
+
+    ports:
+      - 8081:8081
+      - 8000:8081
+
+    volumes:
+      #- ./api/target/api-1.0-SNAPSHOT.jar:/app.jar
+      - ./api/target/api-1.0-SNAPSHOT.jar:/api/target/api-1.0-SNAPSHOT.jar
+
+    #command:
+      #java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000 -jar api-1.0-SNAPSHOT.jar
+
