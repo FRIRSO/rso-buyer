@@ -8,14 +8,12 @@ public class Buyer {
     private int buyerId;
     private String firstName;
     private String lastName;
-    private Date DOB;
     private Address address;
 
-    Buyer(int id, String first, String last, Date DOB, Address address) {
+    Buyer(int id, String first, String last, Address address) {
         this.buyerId = id;
         this.firstName = first;
         this.lastName = last;
-        this.DOB = DOB;
         this.address = address;
     }
 
@@ -41,14 +39,6 @@ public class Buyer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Date getDOB() {
-        return DOB;
-    }
-
-    public void setDOB(Date DOB) {
-        this.DOB = DOB;
     }
 
     public Address getAddress() {

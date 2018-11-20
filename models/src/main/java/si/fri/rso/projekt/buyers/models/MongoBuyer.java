@@ -1,5 +1,6 @@
 package si.fri.rso.projekt.buyers.models;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -8,7 +9,6 @@ import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +48,6 @@ public class MongoBuyer {
             Buyer buyer = new Buyer(curr.getInteger("buyerId"),
                                     curr.getString("firstName"),
                                     curr.getString("lastName"),
-                                    curr.getDate("DOB"),
                                     address);
 
             results.add(buyer);
@@ -79,7 +78,28 @@ public class MongoBuyer {
         return new Buyer(result.getInteger("buyerId"),
                 result.getString("firstName"),
                 result.getString("lastName"),
-                result.getDate("DOB"),
                 address);
+    }
+
+    public void createBuyer(JSONObject json) {
+        MongoClient client = connectDB();
+        MongoDatabase db = client.getDatabase(DBName);
+        MongoCollection<Document> bc = db.getCollection("rso-buyers");
+
+        Document myDoc = bc.find().sort(new BasicDBObject("buyerId",-1)).first();
+        int last = myDoc.getInteger("buyerId");
+
+        Document doc = Document.parse(json.toString());
+        doc.append("buyerId", last + 1);
+        bc.insertOne(doc);
+    }
+
+    public void deleteBuyer(int buyerId) {
+        MongoClient client = connectDB();
+        MongoDatabase db = client.getDatabase(DBName);
+        MongoCollection<Document> bc = db.getCollection("rso-buyers");
+
+        Bson filter = Filters.eq("buyerId", buyerId);
+        bc.deleteOne(filter);
     }
 }

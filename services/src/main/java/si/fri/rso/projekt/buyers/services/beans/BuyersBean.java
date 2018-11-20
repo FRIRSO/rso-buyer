@@ -1,6 +1,7 @@
 package si.fri.rso.projekt.buyers.services.beans;
 
 import com.kumuluz.ee.discovery.annotations.DiscoverService;
+import org.json.JSONObject;
 import si.fri.rso.projekt.buyers.models.Buyer;
 import si.fri.rso.projekt.buyers.services.configuration.AppProperties;
 import si.fri.rso.projekt.buyers.models.MongoBuyer;
@@ -49,8 +50,19 @@ public class BuyersBean {
             return null;
         }
 
-
         return buyer;
+    }
+
+    public void createBuyer(JSONObject json) {
+        MongoBuyer mb = new MongoBuyer();
+
+        mb.createBuyer(json);
+    }
+
+    public void deleteBuyer(int buyerId) {
+        MongoBuyer mb = new MongoBuyer();
+
+        mb.deleteBuyer(buyerId);
     }
 
 }

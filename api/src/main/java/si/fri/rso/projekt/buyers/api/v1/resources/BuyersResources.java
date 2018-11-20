@@ -1,14 +1,12 @@
 package si.fri.rso.projekt.buyers.api.v1.resources;
 
+import org.json.JSONObject;
 import si.fri.rso.projekt.buyers.models.Buyer;
 import si.fri.rso.projekt.buyers.services.beans.BuyersBean;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -40,5 +38,20 @@ public class BuyersResources {
         else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
+    }
+
+    @POST
+    public Response createBuyer(String buyer) {
+        buyersBean.createBuyer(new JSONObject(buyer));
+
+        return Response.status(Response.Status.CREATED).build();
+    }
+
+    @GET
+    @Path("/delete/{buyerId}")
+    public Response deleteBuyer(@PathParam("buyerId") Integer buyerId) {
+        buyersBean.deleteBuyer(buyerId);
+
+        return Response.status(Response.Status.OK).build();
     }
 }
