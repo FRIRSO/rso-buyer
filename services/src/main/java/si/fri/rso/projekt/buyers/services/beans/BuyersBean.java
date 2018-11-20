@@ -8,6 +8,7 @@ import si.fri.rso.projekt.buyers.models.MongoBuyer;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import java.util.List;
@@ -37,6 +38,19 @@ public class BuyersBean {
         MongoBuyer mb = new MongoBuyer();
 
         return mb.getAllBuyers();
+    }
+
+    public Buyer getBuyer(Integer buyerId) {
+        MongoBuyer mb = new MongoBuyer();
+
+        Buyer buyer = mb.getBuyer(buyerId);
+
+        if(buyerId == null) {
+            return null;
+        }
+
+
+        return buyer;
     }
 
 }

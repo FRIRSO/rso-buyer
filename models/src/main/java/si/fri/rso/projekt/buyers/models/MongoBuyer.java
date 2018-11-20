@@ -4,7 +4,9 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -53,5 +55,31 @@ public class MongoBuyer {
         }
 
         return results;
+    }
+
+    public Buyer getBuyer(Integer buyerId) {
+        MongoClient client = connectDB();
+        MongoDatabase db = client.getDatabase(DBName);
+        MongoCollection<Document> bc = db.getCollection("rso-buyers");
+
+        Bson filter = Filters.eq("buyerId", buyerId);
+
+        Document result = bc.find(filter).first();
+
+        if(result == null) {
+            return null;
+        }
+
+        Document addDoc = (Document) result.get("address");
+        Address address = new Address(addDoc.getString("country"),
+                addDoc.getString("city"),
+                addDoc.getString("street"),
+                addDoc.getInteger("streetNo"));
+
+        return new Buyer(result.getInteger("buyerId"),
+                result.getString("firstName"),
+                result.getString("lastName"),
+                result.getDate("DOB"),
+                address);
     }
 }
