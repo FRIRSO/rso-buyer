@@ -12,5 +12,5 @@ services:
       - ./api/target/api-1.0-SNAPSHOT.jar:/api/target/api-1.0-SNAPSHOT.jar
 
     command:
-      java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000 -jar api-1.0-SNAPSHOT.jar
+      java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000 -jar buyers-api-1.0-SNAPSHOT.jar
 
