@@ -3,8 +3,8 @@ package si.fri.rso.projekt.buyers.services.beans;
 import com.kumuluz.ee.discovery.annotations.DiscoverService;
 import org.json.JSONObject;
 import si.fri.rso.projekt.buyers.models.Buyer;
-import si.fri.rso.projekt.buyers.services.configuration.AppProperties;
 import si.fri.rso.projekt.buyers.models.MongoBuyer;
+import si.fri.rso.projekt.buyers.services.configuration.InfoProperties;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -20,7 +20,7 @@ public class BuyersBean {
     private Client httpClient;
 
     @Inject
-    private AppProperties appProperties;
+    private InfoProperties infoProperties;
 
     @Inject
     private BuyersBean buyersBean;
@@ -64,4 +64,9 @@ public class BuyersBean {
         mb.deleteBuyer(buyerId);
     }
 
+    public void getInfo() {
+        String desc = infoProperties.getMember1();
+
+        System.out.println("test");
+    }
 }

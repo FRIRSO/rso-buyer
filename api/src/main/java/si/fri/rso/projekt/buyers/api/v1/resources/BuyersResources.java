@@ -54,4 +54,12 @@ public class BuyersResources {
 
         return Response.status(Response.Status.OK).build();
     }
+
+    @GET
+    @Path("/info")
+    public Response infoProject() {
+        buyersBean.getInfo();
+
+        return Response.ok().build();
+    }
 }

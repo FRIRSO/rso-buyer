@@ -18,4 +18,18 @@ kumuluzee:
 app-properties:
   external-services:
     enabled: false
-    baseUrl: http://localhost:8081
+  healthy: true
+  member1: true
+
+info-properties:
+  member1: as4813
+  member2: gx0000
+  description: "Nas projekt implementira platformo za narocanje hrane."
+  serviceBuyer: address1
+  serviceOrder: address2
+  githubBuyer: https://github.com/FRIRSO/rso-buyer
+  githubOrder: https://github.com/FRIRSO/rso-order
+  travisBuyer: https://travis-ci.org/FRIRSO/rso-buyer
+  travisOrder: https://travis-ci.org/FRIRSO/rso-order
+  dockerBuyer: https://hub.docker.com/r/gsas/rso-buyers/
+  dockerOrder: https://hub.docker.com/r/gsas/rso-orders/
