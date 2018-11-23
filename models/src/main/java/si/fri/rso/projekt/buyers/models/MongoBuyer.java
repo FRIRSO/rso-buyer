@@ -9,18 +9,22 @@ import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.json.JSONObject;
+import si.fri.rso.projekt.buyers.models.configuration.DBProperties;
+
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MongoBuyer {
+
+    @Inject
+    private DBProperties dbProperties;
 
     private final String DBUser       = "root";
     private final String DBPassword   = "13tpxnxJTwUScc3V";
     private final String DBName       = "rso-projekt";
 
     private MongoClient connectDB() {
-
         MongoClientURI uri = new MongoClientURI("mongodb://"+ DBUser +":"+ DBPassword +"@gsascluster-shard-00-00-ocnkx.azure.mongodb.net:27017," +
                 "gsascluster-shard-00-01-ocnkx.azure.mongodb.net:27017,gsascluster-shard-00-02-ocnkx.azure.mongodb.net:27017/test?" +
                 "ssl=true&replicaSet=gsasCluster-shard-0&authSource=admin&retryWrites=true");

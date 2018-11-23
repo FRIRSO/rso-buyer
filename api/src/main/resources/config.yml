@@ -9,27 +9,27 @@ kumuluzee:
       port: 8081
   config:
     etcd:
-      hosts: http://192.168.1.135:2379
+      hosts: http://etcd:2379
   discovery:
     etcd:
-      hosts: http://192.168.1.135:2379
+      hosts: http://etcd:2379
     ttl: 60
     ping-interval: 60
-app-properties:
-  external-services:
-    enabled: false
-  healthy: true
-  member1: true
 
 info-properties:
   member1: as4813
-  member2: gx0000
-  description: "Nas projekt implementira platformo za narocanje hrane."
-  serviceBuyer: address1
-  serviceOrder: address2
-  githubBuyer: https://github.com/FRIRSO/rso-buyer
-  githubOrder: https://github.com/FRIRSO/rso-order
-  travisBuyer: https://travis-ci.org/FRIRSO/rso-buyer
-  travisOrder: https://travis-ci.org/FRIRSO/rso-order
-  dockerBuyer: https://hub.docker.com/r/gsas/rso-buyers/
-  dockerOrder: https://hub.docker.com/r/gsas/rso-orders/
+  member2: gs8150
+  description: Nas projekt implementira platformo za narocanje hrane
+  service-buyer: "137.117.255.32:8081/v1/buyers"
+  service-order: "40.115.23.25:8082/v1/order"
+  github-buyer: "https://github.com/FRIRSO/rso-buyer"
+  github-order: "https://github.com/FRIRSO/rso-order"
+  travis-buyer: "https://travis-ci.org/FRIRSO/rso-buyer"
+  travis-order: "https://travis-ci.org/FRIRSO/rso-order"
+  docker-buyer: "https://hub.docker.com/r/gsas/rso-buyers/"
+  docker-order: "https://hub.docker.com/r/gsas/rso-orders/"
+
+db-properties:
+  db-user: root
+  db-pass: 13tpxnxJTwUScc3V
+  db-name: rso-projekt

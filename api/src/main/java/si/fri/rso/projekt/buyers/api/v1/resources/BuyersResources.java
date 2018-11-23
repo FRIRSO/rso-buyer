@@ -58,8 +58,6 @@ public class BuyersResources {
     @GET
     @Path("/info")
     public Response infoProject() {
-        buyersBean.getInfo();
-
-        return Response.ok().build();
+        return Response.ok(buyersBean.getInfo().toString()).build();
     }
 }
