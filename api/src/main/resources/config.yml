@@ -21,7 +21,7 @@ info-properties:
   member2: gs8150
   description: Nas projekt implementira platformo za narocanje hrane
   service-buyer: "137.117.255.32:8081/v1/buyers"
-  service-order: "40.115.23.25:8082/v1/order"
+  service-order: "40.115.23.25:8082/v1/orders"
   github-buyer: "https://github.com/FRIRSO/rso-buyer"
   github-order: "https://github.com/FRIRSO/rso-order"
   travis-buyer: "https://travis-ci.org/FRIRSO/rso-buyer"
