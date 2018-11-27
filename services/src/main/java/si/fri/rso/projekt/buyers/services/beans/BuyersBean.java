@@ -68,11 +68,11 @@ public class BuyersBean {
 
     public JSONObject getInfo() {
         JSONObject info = new JSONObject();
-        info.append("clani", new JSONArray().put(infoProperties.getMember1()).put(infoProperties.getMember2()));
-        info.append("mikrostoritve", new JSONArray().put(infoProperties.getServiceBuyer()).put(infoProperties.getServiceOrder()));
-        info.append("github", new JSONArray().put(infoProperties.getGithubBuyer()).put(infoProperties.getGithubOrder()));
-        info.append("travis", new JSONArray().put(infoProperties.getTravisBuyer()).put(infoProperties.getTravisOrder()));
-        info.append("dockerhub", new JSONArray().put(infoProperties.getDockerBuyer()).put(infoProperties.getDockerOrder()));
+        info.put("clani", new JSONArray().put(infoProperties.getMember1()).put(infoProperties.getMember2()));
+        info.put("mikrostoritve", new JSONArray().put(infoProperties.getServiceBuyer()).put(infoProperties.getServiceOrder()));
+        info.put("github", new JSONArray().put(infoProperties.getGithubBuyer()).put(infoProperties.getGithubOrder()));
+        info.put("travis", new JSONArray().put(infoProperties.getTravisBuyer()).put(infoProperties.getTravisOrder()));
+        info.put("dockerhub", new JSONArray().put(infoProperties.getDockerBuyer()).put(infoProperties.getDockerOrder()));
         info.put("opis_projekta", infoProperties.getDescription());
 
         return info;
