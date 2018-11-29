@@ -17,6 +17,11 @@ public class Buyer {
         this.address = address;
     }
 
+
+    public Buyer() {
+        super();
+    }
+
     public int getBuyerId() {
         return buyerId;
     }

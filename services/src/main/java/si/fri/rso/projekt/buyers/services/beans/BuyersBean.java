@@ -77,4 +77,8 @@ public class BuyersBean {
 
         return info;
     }
+
+    public String getMsg() {
+        return "Buyers is working!";
+    }
 }

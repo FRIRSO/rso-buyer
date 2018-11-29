@@ -2,7 +2,7 @@ kumuluzee:
   name: rso-buyer
   env:
     name: dev
-  version: 1.0.
+  version: 1.0.0
   server:
     base-url: http://localhost:8081
     http:

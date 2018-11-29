@@ -28,6 +28,15 @@ public class BuyersResources {
     }
 
     @GET
+    @Path("/test")
+    public Response getTextFromBuyer() {
+        String msg = buyersBean.getMsg();
+
+        //return Response.status(Response.Status.OK).entity("Dela").build();
+        return Response.ok(msg).build();
+    }
+
+    @GET
     @Path("/{buyerId}")
     public Response getBuyer(@PathParam("buyerId") Integer buyerId) {
         Buyer buyer = buyersBean.getBuyer(buyerId);
