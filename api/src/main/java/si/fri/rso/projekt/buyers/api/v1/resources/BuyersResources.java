@@ -1,6 +1,7 @@
 package si.fri.rso.projekt.buyers.api.v1.resources;
 
 import org.json.JSONObject;
+import si.fri.rso.projekt.buyers.api.v1.configuration.RestProperties;
 import si.fri.rso.projekt.buyers.models.Buyer;
 import si.fri.rso.projekt.buyers.services.beans.BuyersBean;
 
@@ -19,6 +20,9 @@ public class BuyersResources {
     @Inject
     private BuyersBean buyersBean;
 
+    @Inject
+    private RestProperties restProperties;
+
     @GET
     public Response getBuyers() {
         List<Buyer> buyers = buyersBean.allBuyers();
@@ -30,10 +34,19 @@ public class BuyersResources {
     @GET
     @Path("/test")
     public Response getTextFromBuyer() {
-        String msg = buyersBean.getMsg();
+        if(!restProperties.isFaultTolerance()) {
+            String msg = buyersBean.getMsg();
 
-        //return Response.status(Response.Status.OK).entity("Dela").build();
-        return Response.ok(msg).build();
+            //return Response.status(Response.Status.OK).entity("Dela").build();
+            return Response.ok(msg).build();
+        }
+        return Response.serverError().build();
+    }
+
+    @GET
+    @Path("ft")
+    public Response getFTStatus() {
+        return Response.ok(restProperties.isFaultTolerance()).build();
     }
 
     @GET

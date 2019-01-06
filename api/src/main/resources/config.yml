@@ -16,6 +16,9 @@ kumuluzee:
     ttl: 60
     ping-interval: 60
 
+rest-properties:
+  faultTolerance: false
+
 info-properties:
   member1: as4813
   member2: gs8150
