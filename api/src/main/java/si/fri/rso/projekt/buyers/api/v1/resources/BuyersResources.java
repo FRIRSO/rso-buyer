@@ -82,4 +82,11 @@ public class BuyersResources {
     public Response infoProject() {
         return Response.ok(buyersBean.getInfo().toString()).build();
     }
+
+    @GET
+    @Path("/price/{orderID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response checkPrice(@PathParam("orderID") Integer orderID) {
+        return Response.ok(buyersBean.getBillPrice(orderID)).build();
+    }
 }

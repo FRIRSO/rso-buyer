@@ -11,8 +11,11 @@ import si.fri.rso.projekt.buyers.services.configuration.InfoProperties;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.ProcessingException;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +29,8 @@ public class BuyersBean {
 
     @Inject
     private BuyersBean buyersBean;
+
+    private String billUrl = "http://localhost:8086";
 
     //@Inject
     //@DiscoverService("rso-orderes")
@@ -80,5 +85,27 @@ public class BuyersBean {
 
     public String getMsg() {
         return "Buyers is working!";
+    }
+
+    public String getBillPrice(int orderID){
+        if(!billUrl.isEmpty()) {
+            try {
+                String billResponse = httpClient.target(billUrl + "/v1/bills/" + orderID)
+                                        .request()
+                                        .accept(MediaType.APPLICATION_JSON)
+                                        .get(String.class);
+
+                JSONObject jsonResponse = new JSONObject(billResponse);
+
+                double price = jsonResponse.getDouble("price");
+
+                return "Price: " + price;
+            }
+            catch (WebApplicationException | ProcessingException e) {
+                System.out.println("wrong");
+            }
+        }
+        System.out.println("errror: sth went wring!");
+        return "Sth went wrong!";
     }
 }
