@@ -43,16 +43,16 @@ public class MongoBuyer {
 
         for(Document curr : buyerCollection.find()) {
 
-            //Document addDoc = (Document) curr.get("address");
-            //Address address = new Address(addDoc.getString("country"),
-                                        //addDoc.getString("city"),
-                                        //addDoc.getString("street"),
-                                        //addDoc.getInteger("streetNo"));
+            Document addDoc = (Document) curr.get("address");
+            Address address = new Address(addDoc.getString("country"),
+                                        addDoc.getString("city"),
+                                        addDoc.getString("street"),
+                                        addDoc.getInteger("streetNo"));
 
             Buyer buyer = new Buyer(curr.getInteger("buyerId"),
                                     curr.getString("firstName"),
                                     curr.getString("lastName"),
-                                    null);
+                                    address);
 
             results.add(buyer);
         }
@@ -74,15 +74,15 @@ public class MongoBuyer {
         }
 
         Document addDoc = (Document) result.get("address");
-       // Address address = new Address(addDoc.getString("country"),
-       //         addDoc.getString("city"),
-       //         addDoc.getString("street"),
-       //         addDoc.getInteger("streetNo"));
+        Address address = new Address(addDoc.getString("country"),
+                addDoc.getString("city"),
+                addDoc.getString("street"),
+                addDoc.getInteger("streetNo"));
 
         return new Buyer(result.getInteger("buyerId"),
                 result.getString("firstName"),
                 result.getString("lastName"),
-                null);
+                address);
     }
 
     public void createBuyer(JSONObject json) {
