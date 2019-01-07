@@ -30,11 +30,11 @@ public class BuyersBean {
     @Inject
     private BuyersBean buyersBean;
 
-    private String billUrl = "http://localhost:8086";
+    //private String billUrl = "http://localhost:8086";
 
-    //@Inject
-    //@DiscoverService("rso-orderes")
-    //private Optional<String> baseUrl;
+    @Inject
+    @DiscoverService("rso-bill")
+    private Optional<String> baseUrlBill;
 
     @PostConstruct
     private void init() {
@@ -52,7 +52,7 @@ public class BuyersBean {
 
         Buyer buyer = mb.getBuyer(buyerId);
 
-        if(buyerId == null) {
+        if (buyerId == null) {
             return null;
         }
 
@@ -88,9 +88,10 @@ public class BuyersBean {
     }
 
     public String getBillPrice(int orderID){
-        if(!billUrl.isEmpty()) {
+        System.out.printf("\n\n\n" + baseUrlBill.get() + "\n\n\n\n");
+        if(!baseUrlBill.isPresent()) {
             try {
-                String billResponse = httpClient.target(billUrl + "/v1/bills/" + orderID)
+                String billResponse = httpClient.target(baseUrlBill.get() + "/v1/bills/" + orderID)
                                         .request()
                                         .accept(MediaType.APPLICATION_JSON)
                                         .get(String.class);
