@@ -89,7 +89,7 @@ public class BuyersBean {
 
     public String getBillPrice(int orderID){
         System.out.printf("\n\n\n" + baseUrlBill.get() + "\n\n\n\n");
-        if(!baseUrlBill.isPresent()) {
+        if(baseUrlBill.isPresent()) {
             try {
                 String billResponse = httpClient.target(baseUrlBill.get() + "/v1/bills/" + orderID)
                                         .request()
